@@ -170,7 +170,7 @@
             <div class="swiper-button-prev"></div>
          </div>
          </div>
-         <div class="hotdeal-content lazy" data-src="//bizweb.dktcdn.net/100/418/839/themes/808559/assets/feature_banner.jpg?1663922909046">
+         <div class="hotdeal-content lazy" data-src="{{url('frontend/images/qq.jpg')}}">
          <div class="container">
             <div class="products-view-grid products evo-owl-product swiper-container">
                <div class="swiper-wrapper">
