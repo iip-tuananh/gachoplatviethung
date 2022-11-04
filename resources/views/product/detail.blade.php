@@ -150,8 +150,8 @@ $discount = $product->price * ($product->discount / 100);
                         </div>
                         <div class="btn-mua">
                            <input type="hidden" name="variantId" value="{{$product->id}}" />
-                           <button type="submit" data-role='addtocart' class="btn btn-lg btn-gray btn-cart btn_buy add_to_cart">Thêm vào giỏ</button>
-                           <button type="button" class="btn btn-buy-now">Mua ngay</button>
+                           <button type="submit" data-role='addtocart' class="btn btn-lg btn-gray btn-cart btn_buy add_to_cart" data-url="{{route('addToCart')}}">Thêm vào giỏ</button>
+                           <button type="button" class="btn btn-buy-now" data-url="{{route('addToCart')}}">Mua ngay</button>
                         </div>
                      </div>
                   </form>
@@ -219,7 +219,7 @@ $discount = $product->price * ($product->discount / 100);
                </div>
                <div class="product_info_buttons ">
                   <input type="hidden" name="variantId" value="{{$product->id}}" />
-                  <button class="btn btn_buyNow btn-buy-now-click">Thêm vào giỏ</button>
+                  <button class="btn btn_buyNow btn-buy-now-click" data-url="{{route('addToCart')}}">Thêm vào giỏ</button>
                </div>
             </div>
          </div>

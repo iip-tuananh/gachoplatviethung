@@ -741,6 +741,7 @@
          </div>
    </div>
 </section> --}}
+@if (isset($bannerNho))
 <section class="awe-section-8">
    <div class="container section_banner_evo_2">
          <a href="{{$bannerNho->link}}" title="{{$bannerNho->title}}">
@@ -748,6 +749,7 @@
          </a>
    </div>
 </section>
+@endif
 @foreach ($blogCate as $cate)
    @if (count($cate->listBlog) > 0)
    <section class="awe-section-9">

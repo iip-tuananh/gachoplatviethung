@@ -44,7 +44,7 @@ class ProductController extends Controller
             }
         }
         $data['brands'] = $listBrand;
-        $data['cateid'] = $cate_id;
+        $data['cate_id'] = $cate_id;
         $data['title'] = languageName($data['cateno']->name);
         $data['content'] = $data['cateno']->content;
         return view('product.list',$data);
@@ -69,7 +69,7 @@ class ProductController extends Controller
         }
         $data['brands'] = $listBrand;
         $data['title'] = languageName($data['cateno']->name);
-        $data['cateid'] = 0;
+        $data['type_id'] = $data['cateno']->id;
         $data['content'] = $data['cateno']->content;
         return view('product.list',$data);
     }
@@ -157,19 +157,53 @@ class ProductController extends Controller
                 }
             }
             if(isset($request->sortby)){
-                if($request->sortby == 'DESC'){
-                    $product = $product->where('category',$request->cate)->orderBy('discount','DESC');
-                }elseif($request->sortby == 'ASC'){
-                    $product = $product->where('category',$request->cate)->orderBy('discount','ASC');
-                }elseif($request->sortby == 'new'){
-                    $product = $product->where('category',$request->cate)->orderBy('id','DESC');
-                }elseif($request->sortby == 'PRICE_DESC'){
+                if($request->sortby == 'alpha-asc'){
+                    $product = $product->where('category',$request->cate)->orderBy('name','asc');
+                }elseif($request->sortby == 'alpha-desc'){
+                    $product = $product->where('category',$request->cate)->orderBy('name','desc');
+                }elseif($request->sortby == 'created-desc'){
+                    $product = $product->where('category',$request->cate)->orderBy('id','desc');
+                }elseif($request->sortby == 'price-desc'){
                     $product = $product->where('category',$request->cate)->orderBy('price','DESC');
-                }elseif($request->sortby == 'PRICE_ASC'){
+                }elseif($request->sortby == 'price-asc'){
                     $product = $product->where('category',$request->cate)->orderBy('price','ASC');
                 }
             }
-        }else{
+        }
+        elseif($request->sale == true){
+            if(isset($request->price)){
+                if($request->price == '<1trieu'){
+                    $product = $product->where('discount','>', 0)->where('price', '<', 1000000);
+                }elseif($request->price == '1-2trieu'){
+                    $product = $product->where('discount','>', 0)->whereBetween('price', [1000000, 2000000]);
+                }elseif($request->price == '2-3trieu'){
+                    $product = $product->where('discount','>', 0)->whereBetween('price', [2000000, 3000000]);
+                }elseif($request->price == '3-5trieu'){
+                    $product = $product->where('discount','>', 0)->whereBetween('price', [3000000, 5000000]);
+                }elseif($request->price == '5-8trieu'){
+                    $product = $product->where('discount','>', 0)->whereBetween('price', [5000000, 8000000]);
+                }elseif($request->price == '8-10trieu'){
+                    $product = $product->where('discount','>', 0)->whereBetween('price', [8000000, 10000000]);
+                }
+                else{
+                    $product = $product->where('discount','>', 0)->where('price', '>', 10000000);
+                }
+            }
+            if(isset($request->sortby)){
+                if($request->sortby == 'alpha-asc'){
+                    $product = $product->where('discount','>', 0)->orderBy('name','asc');
+                }elseif($request->sortby == 'alpha-desc'){
+                    $product = $product->where('discount','>', 0)->orderBy('name','desc');
+                }elseif($request->sortby == 'created-desc'){
+                    $product = $product->where('discount','>', 0)->orderBy('id','desc');
+                }elseif($request->sortby == 'price-desc'){
+                    $product = $product->where('discount','>', 0)->orderBy('price','DESC');
+                }elseif($request->sortby == 'price-asc'){
+                    $product = $product->where('discount','>', 0)->orderBy('price','ASC');
+                }
+            }
+        }
+        else{
             if(isset($request->price)){
                 if($request->price == '<1trieu'){
                     $product = $product->where('type_cate',$request->type)->where('price', '<', 1000000);
@@ -185,26 +219,26 @@ class ProductController extends Controller
                     $product = $product->where('type_cate',$request->type)->whereBetween('price', [8000000, 10000000]);
                 }
                 else{
-                    $product = $product->where('category',$request->type)->where('price', '>', 10000000);
+                    $product = $product->where('type_cate',$request->type)->where('price', '>', 10000000);
                 }
             }
             if(isset($request->sortby)){
-                if($request->sortby == 'DESC'){
-                    $product = $product->where('type_cate',$request->type)->orderBy('discount','DESC');
-                }elseif($request->sortby == 'ASC'){
-                    $product = $product->where('type_cate',$request->type)->orderBy('discount','ASC');
-                }elseif($request->sortby == 'new'){
-                    $product = $product->where('type_cate',$request->type)->orderBy('id','DESC');
-                }elseif($request->sortby == 'PRICE_DESC'){
+                if($request->sortby == 'alpha-asc'){
+                    $product = $product->where('type_cate',$request->type)->orderBy('name','asc');
+                }elseif($request->sortby == 'alpha-desc'){
+                    $product = $product->where('type_cate',$request->type)->orderBy('name','desc');
+                }elseif($request->sortby == 'created-desc'){
+                    $product = $product->where('type_cate',$request->type)->orderBy('id','desc');
+                }elseif($request->sortby == 'price-desc'){
                     $product = $product->where('type_cate',$request->type)->orderBy('price','DESC');
-                }elseif($request->sortby == 'PRICE_ASC'){
+                }elseif($request->sortby == 'price-asc'){
                     $product = $product->where('type_cate',$request->type)->orderBy('price','ASC');
                 }
             }
         }
         
-        $product = $product->get();
-        $view = view("layouts.product.filter",compact('product'))->render();
+        $products = $product->select()->paginate(12);
+        $view = view("layouts.product.filter",compact('products'))->render();
 
         return response()->json(['html'=>$view]);
     }

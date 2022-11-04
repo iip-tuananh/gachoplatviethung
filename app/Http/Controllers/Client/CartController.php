@@ -112,7 +112,13 @@ class CartController extends Controller
         }
         
         session()->put('cart', $cart);
-        return response()->json($cart);
+        $data['cart'] = session()->get('cart',[]);
+        $html = view('cart.popup-cart-header', $data)->render();
+        $html1 = view('cart.count-cart-header', $data)->render();
+        return response()->json([
+            'html'=>$html,
+            'html1'=>$html1
+        ]);
     }
     public function update(Request $request)
     {
@@ -120,7 +126,11 @@ class CartController extends Controller
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            return response()->json($cart);
+            $data['cart'] = session()->get('cart',[]);
+            $html = view('cart.popup-cart-header', $data)->render();
+            return response()->json([
+                'html'=>$html,
+            ]);
         }
         
     }
@@ -132,7 +142,13 @@ class CartController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            return response()->json($cart);
+            $data['cart'] = session()->get('cart',[]);
+            $html = view('cart.popup-cart-header', $data)->render();
+            $html1 = view('cart.count-cart-header', $data)->render();
+            return response()->json([
+                'html'=>$html,
+                'html1'=>$html1
+            ]);
         }
     }
 }

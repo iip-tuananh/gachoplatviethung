@@ -53,7 +53,7 @@ Route::group(['namespace'=>'Client','middleware' => ['checkLanguage']], function
 
     Route::get('gio-hang.html', 'CartController@listCart')->name('listCart');
     Route::post('add-to-cart', 'CartController@addToCart')->name('addToCart');
-    Route::get('update-cart', 'CartController@update')->name('updateCart');
+    Route::post('update-cart', 'CartController@update')->name('updateCart');
     Route::get('remove-from-cart', 'CartController@remove')->name('removeCart');
     Route::get('thanh-toan.html','CartController@checkout')->name('checkout');
     Route::post('thantoan','CartController@postBill')->name('postBill');

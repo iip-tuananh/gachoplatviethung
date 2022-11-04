@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="KoKo Pet - Thanh toán đơn hàng" />
-	<title>NMIGROUP - Thanh toán đơn hàng</title>
+	<title>VIỆT HÙNG - Thanh toán đơn hàng</title>
 	<link rel="icon" href="{{url(''.$setting->favicon)}}" type="image/x-icon">
 	<link rel="stylesheet" href="{{ asset('frontend/css/checkout.vendor.min.js') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/css/checkout.min.css') }}">
@@ -27,7 +27,7 @@
 			<div class="logo logo--left ">
 				<h1 class="shop__name">
 					<a href="{{ route('home') }}">
-					NMIGROUP
+					VIỆT HÙNG
 					</a>
 				</h1>
 			</div>
@@ -54,7 +54,7 @@
 						<div class="logo logo--left ">
 							<h1 class="shop__name">
 								<a href="{{ route('home') }}">
-									NMIGROUP
+									VIỆT HÙNG
 								</a>
 							</h1>
 						</div>

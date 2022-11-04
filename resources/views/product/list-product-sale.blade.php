@@ -9,6 +9,36 @@ Danh sách sản phẩm khuyến mãi
 {{url(''.$setting->logo)}}
 @endsection
 @section('js')
+<script>
+    function sortby(e) {
+    var sortby = e;
+    var url = $('.filter-url').data('url');
+    $('.btn-quick-sort').removeClass('active');
+    $('.'+sortby).addClass('active');
+    $.ajax({
+        type: 'post',
+        url: url,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: {
+            sortby: sortby,
+            sale: true
+        },
+        success: function(data) {
+            $('.products-view-grid').html(data.html);
+            $(document).ready(function ($) {
+            awe_lazyloadImage();
+            });
+            function awe_lazyloadImage() {
+                    var ll = new LazyLoad({
+                        elements_selector: ".lazy",
+                        load_delay: 100,
+                        threshold: 0
+                    });
+            } window.awe_lazyloadImage=awe_lazyloadImage;
+        }
+    })
+    }
+</script>
 @endsection
 @section('css')
 <link rel="preload" as="style" type="text/css" href="{{asset('frontend/css/evo-collections.scss.css')}}" />
@@ -34,7 +64,7 @@ Danh sách sản phẩm khuyến mãi
     </div>
 </section>
 <div class="container">
-    <div class="main_container collection margin-bottom-5">
+    <div class="main_container collection margin-bottom-5 filter-url" data-url="{{route('filterProduct')}}">
     <h1 class="col-title">Sản phẩm giảm giá</h1>
     <div class="row">
         <div class="col-lg-9 col-md-12">

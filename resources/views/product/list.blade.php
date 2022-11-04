@@ -13,6 +13,40 @@ Danh sách {{$title}}
 <link href="{{asset('frontend/css/evo-collections.scss.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('js')
+<script>
+   function sortby(e) {
+      var sortby = e;
+      var cate = $('input[name=cate_id]').val();
+      var type = $('input[name=type_id]').val();
+
+      var url = $('.filter-url').data('url');
+      $('.btn-quick-sort').removeClass('active');
+      $('.'+sortby).addClass('active');
+      $.ajax({
+         type: 'post',
+         url: url,
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+         data: {
+            sortby: sortby,
+            cate: cate,
+            type: type
+         },
+         success: function(data) {
+            $('.products-view-grid').html(data.html);
+            $(document).ready(function ($) {
+            awe_lazyloadImage();
+            });
+            function awe_lazyloadImage() {
+                  var ll = new LazyLoad({
+                     elements_selector: ".lazy",
+                     load_delay: 100,
+                     threshold: 0
+                  });
+            } window.awe_lazyloadImage=awe_lazyloadImage;
+         }
+      })
+   }
+</script>
 @endsection
 @section('content')
 <section class="bread-crumb">
@@ -34,8 +68,14 @@ Danh sách {{$title}}
    </div>
 </section>
 <div class="container">
-   <div class="main_container collection margin-bottom-5">
+   <div class="main_container collection margin-bottom-5 filter-url" data-url="{{route('filterProduct')}}">
       <h1 class="col-title">{{$title}}</h1>
+      @if (isset($cate_id))
+         <input type="text" name="cate_id" value="{{$cate_id}}" hidden>
+      @endif
+      @if (isset($type_id))
+         <input type="text" name="type_id" value="{{$type_id}}" hidden>
+      @endif
       <div class="row">
          <div class="col-lg-9 col-md-12">
             <div class="category-products products category-products-grids clearfix">
@@ -92,12 +132,12 @@ Danh sách {{$title}}
                      @include('layouts.product.item', ['product'=>$product])
                   </div>
                   @endforeach
+                  <div class="text-xs-right text-center pagging-css margin-top-20">
+                     <nav class="text-center">
+                        {{$list->links()}}
+                     </nav>
+                  </div>
                </section>
-               <div class="text-xs-right text-center pagging-css margin-top-20">
-                  <nav class="text-center">
-                     {{$list->links()}}
-                  </nav>
-               </div>
             </div>
          </div>
          <div class="col-lg-3 col-md-12 left-content">

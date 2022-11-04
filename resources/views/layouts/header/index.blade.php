@@ -14,10 +14,14 @@
                </a>					
             </div>
             <div class="mobile-cart visible-sm visible-xs d-sm-inline-block d-lg-none evo-header-cart">
-               <a href="javacript:void(0);" title="Giỏ hàng">
+               <a href="javascript:void(0);" title="Giỏ hàng">
                <i class="fa fa-shopping-bag"></i>
                <div class="cart-right">
-                     <span class="count_item_pr">0</span>
+                  @if (count($cartcontent) > 0)
+                  <span class="count_item_pr">{{count($cartcontent)}}</span>
+                  @else
+                  <span class="count_item_pr">0</span>
+                  @endif
                </div>
                </a>
             </div>
@@ -46,10 +50,17 @@
                            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                         </div>
                         <div class="content_cart_header">
-                           <a class="bg_cart" href="javacript:void(0);" title="Giỏ hàng">
-                           (<span class="count_item count_item_pr">0</span>) Sản phẩm
-                           <span class="text-giohang">Giỏ hàng</span>
-                           </a>
+                           @if (count($cartcontent) > 0)
+                              <a class="bg_cart" href="javascript:void(0);" title="Giỏ hàng">
+                              (<span class="count_item count_item_pr">{{count($cartcontent)}}</span>) Sản phẩm
+                              <span class="text-giohang">Giỏ hàng</span>
+                              </a>
+                           @else
+                              <a class="bg_cart" href="javascript:void(0);" title="Giỏ hàng">
+                                 (<span class="count_item count_item_pr">0</span>) Sản phẩm
+                                 <span class="text-giohang">Giỏ hàng</span>
+                              </a>
+                           @endif
                         </div>
                      </div>
                </div>

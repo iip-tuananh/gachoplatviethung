@@ -34,11 +34,11 @@ $(document).ready(function ($) {
 	if($('.cart_body>div').length == '0' ){
 		$('.cart-footer').hide();
 		jQuery('<div class="cart-empty">'
-			   + '<span class="empty-icon"><i class="ico ico-cart"></i></span>'
-			   + '<div class="btn-cart-empty">'
-			   + '<a class="btn btn-default" href="/" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>'
-			   + '</div>'
-			   + '</div>').appendTo('.cart_body');
+				+ '<span class="empty-icon"><i class="ico ico-cart"></i></span>'
+				+ '<div class="btn-cart-empty">'
+				+ '<a class="btn btn-default" href="/" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>'
+				+ '</div>'
+				+ '</div>').appendTo('.cart_body');
 	};
 });
 $(document).on('click','.overlay, .close-popup, .btn-continue, .fancybox-close', function() {   
