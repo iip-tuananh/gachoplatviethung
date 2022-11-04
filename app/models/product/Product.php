@@ -47,7 +47,7 @@ class Product extends Model
         $cat = Category::where('id',$request->category)->first('slug');
         $typecat = TypeProduct::where('id',$request->type_cate)->first('slug');
         $typetwo = TypeProductTwo::where('id',$request->type_two)->first('slug');
-        $brand = ProductBrands::where('id', $request->brand_id)->first('slug');
+        // $brand = ProductBrands::where('id', $request->brand_id)->first('slug');
         $id = $request->id;
         if($id){
             $query = Product::find($id);
@@ -62,8 +62,8 @@ class Product extends Model
                 $query->size = json_encode($request->size);
                 $query->category = $request->category;
                 $query->type_two = $request->type_two;
-                $query->brand_id = $request->brand_id;
-                $query->brand_slug = $brand->slug;
+                // $query->brand_id = $request->brand_id;
+                // $query->brand_slug = $brand->slug;
                 $query->combo_id = $request->combo_id;
                 $query->preserve = json_encode($request->preserve);
                 $query->cate_slug = $cat ? $cat->slug : '';
@@ -93,8 +93,8 @@ class Product extends Model
             $query->size = json_encode($request->size);
             $query->category = $request->category;
             $query->type_two = $request->type_two;
-            $query->brand_id = $request->brand_id;
-            $query->brand_slug = $brand->slug;
+            // $query->brand_id = $request->brand_id;
+            // $query->brand_slug = $brand->slug;
             $query->combo_id = $request->combo_id;
             $query->preserve = json_encode($request->preserve);
             $query->cate_slug = $cat ? $cat->slug : '';

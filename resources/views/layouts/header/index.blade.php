@@ -13,8 +13,8 @@
                <img src="{{$setting->logo}}" alt="{{$setting->company}}">					
                </a>					
             </div>
-            <div class="mobile-cart visible-sm visible-xs d-sm-inline-block d-lg-none">
-               <a href="{{route('listCart')}}" title="Giỏ hàng">
+            <div class="mobile-cart visible-sm visible-xs d-sm-inline-block d-lg-none evo-header-cart">
+               <a href="javacript:void(0);" title="Giỏ hàng">
                <i class="fa fa-shopping-bag"></i>
                <div class="cart-right">
                      <span class="count_item_pr">0</span>
@@ -39,14 +39,14 @@
          </div>
          <div class="col-md-4 hidden-sm hidden-xs">
             <div class="header-right clearfix d-none d-lg-inline-block">
-               <div class="top-cart-contain f-right">
+               <div class="top-cart-contain f-right evo-header-cart">
                <div class="mini-cart text-xs-center">
                      <div class="heading-cart cart_header">
                         <div class="icon_hotline">
                            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                         </div>
                         <div class="content_cart_header">
-                           <a class="bg_cart" href="{{route('listCart')}}" title="Giỏ hàng">
+                           <a class="bg_cart" href="javacript:void(0);" title="Giỏ hàng">
                            (<span class="count_item count_item_pr">0</span>) Sản phẩm
                            <span class="text-giohang">Giỏ hàng</span>
                            </a>
@@ -120,12 +120,12 @@
             </div>
             <div class="col-md-9 no-padding">
                <ul id="nav" class="nav">
-                     <li class="nav-item active"><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
-                     <li class="nav-item "><a class="nav-link" href="{{route('aboutUs')}}">Giới thiệu</a></li>
+                     <li class="nav-item {{ Route::currentRouteName()== 'home' ? 'active' : '' }}"><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
+                     <li class="nav-item {{ Route::currentRouteName()== 'aboutUs' ? 'active' : '' }}"><a class="nav-link" href="{{route('aboutUs')}}">Giới thiệu</a></li>
                      @foreach ($blogCate as $cate)
-                     <li class="nav-item "><a class="nav-link" href="{{route('listCateBlog', ['slug'=>$cate->slug])}}">{{languageName($cate->name)}}</a></li>
+                     <li class="nav-item {{url()->current() == route('listCateBlog', ['slug'=>$cate->slug]) ? 'active' : ''}}"><a class="nav-link" href="{{route('listCateBlog', ['slug'=>$cate->slug])}}">{{languageName($cate->name)}}</a></li>
                      @endforeach
-                     <li class="nav-item "><a class="nav-link" href="{{route('lienHe')}}">Liên hệ</a></li>
+                     <li class="nav-item {{ Route::currentRouteName()== 'lienHe' ? 'active' : '' }}"><a class="nav-link" href="{{route('lienHe')}}">Liên hệ</a></li>
                </ul>
             </div>
          </div>

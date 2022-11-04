@@ -164,7 +164,7 @@
          </div>
          <div class="evo-sale-controller">
             <div class="th-decor">
-               <a class="hotdeal-control" href="{{route('allProduct')}}" title="Xem tất cả">Xem tất cả</a>
+               <a class="hotdeal-control" href="{{route('listSale')}}" title="Xem tất cả">Xem tất cả</a>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

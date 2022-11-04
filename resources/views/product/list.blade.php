@@ -26,7 +26,7 @@ Danh sách {{$title}}
          </li>
          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <strong>
-               <span itemprop="name">Máy cầm tay điện</span>
+               <span itemprop="name">{{$title}}</span>
                <meta itemprop="position" content="2" />
             </strong>
          </li>
@@ -35,20 +35,7 @@ Danh sách {{$title}}
 </section>
 <div class="container">
    <div class="main_container collection margin-bottom-5">
-      <h1 class="col-title">Máy cầm tay điện</h1>
-      {{-- <div class="evo-col-banner lazy" data-src="//bizweb.dktcdn.net/100/418/839/themes/808559/assets/cate_slider_1.jpg?1663922909046">
-         <div class="content-left-banner">
-            <div class="big-title">
-               Dụng cụ sửa chữa Bosch
-            </div>
-            <div class="small-title">
-               Giảm đến 50%
-            </div>
-         </div>
-         <div class="content-right-banner">
-            <a href="#" title="Xem ngay">Xem ngay</a>
-         </div>
-      </div> --}}
+      <h1 class="col-title">{{$title}}</h1>
       <div class="row">
          <div class="col-lg-9 col-md-12">
             <div class="category-products products category-products-grids clearfix">
@@ -106,6 +93,11 @@ Danh sách {{$title}}
                   </div>
                   @endforeach
                </section>
+               <div class="text-xs-right text-center pagging-css margin-top-20">
+                  <nav class="text-center">
+                     {{$list->links()}}
+                  </nav>
+               </div>
             </div>
          </div>
          <div class="col-lg-3 col-md-12 left-content">
@@ -197,55 +189,10 @@ Danh sách {{$title}}
                               </li>
                            </ul>
                         </aside>
-                        <aside class="aside-item filter-type">
-                           <div class="aside-title">Loại sản phẩm <span class="svg svg1 collapsible-plus"></span></div>
-                           <ul class="aside-content filter-group">
-                              <li class="filter-item filter-item--check-box filter-item--green">
-                                 <label data-filter="máy khoan" for="filter-may-khoan">
-                                 <input type="checkbox" id="filter-may-khoan" onchange="toggleFilter(this)"  data-group="Loại" data-field="product_type.filter_key" data-text="Máy khoan" value='(&#34;Máy khoan&#34;)' data-operator="OR">
-                                 <i class="fa"></i>
-                                 Máy khoan
-                                 </label>
-                              </li>
-                              <li class="filter-item filter-item--check-box filter-item--green">
-                                 <label data-filter="máy khoan pin" for="filter-may-khoan-pin">
-                                 <input type="checkbox" id="filter-may-khoan-pin" onchange="toggleFilter(this)"  data-group="Loại" data-field="product_type.filter_key" data-text="Máy khoan pin" value='(&#34;Máy khoan pin&#34;)' data-operator="OR">
-                                 <i class="fa"></i>
-                                 Máy khoan pin
-                                 </label>
-                              </li>
-                              <li class="filter-item filter-item--check-box filter-item--green">
-                                 <label data-filter="máy vặn vít" for="filter-may-van-vit">
-                                 <input type="checkbox" id="filter-may-van-vit" onchange="toggleFilter(this)"  data-group="Loại" data-field="product_type.filter_key" data-text="Máy vặn vít" value='(&#34;Máy vặn vít&#34;)' data-operator="OR">
-                                 <i class="fa"></i>
-                                 Máy vặn vít
-                                 </label>
-                              </li>
-                           </ul>
-                        </aside>
-                        <aside class="aside-item filter-tag-style-1 tag-filtster">
-                           <div class="aside-title">Loại thiết bị <span class="svg svg1 collapsible-plus"></span></div>
-                           <ul class="aside-content filter-group">
-                              <li class="filter-item filter-item--check-box filter-item--green">
-                                 <label for="filter-chay-pin">
-                                 <input type="checkbox" id="filter-chay-pin" onchange="toggleFilter(this)" data-group="tag1" data-field="tags" data-text="Chạy pin" value="(Chạy pin)" data-operator="OR">
-                                 <i class="fa"></i>
-                                 Chạy pin
-                                 </label>
-                              </li>
-                              <li class="filter-item filter-item--check-box filter-item--green">
-                                 <label for="filter-chay-dien">
-                                 <input type="checkbox" id="filter-chay-dien" onchange="toggleFilter(this)" data-group="tag1" data-field="tags" data-text="Chạy điện" value="(Chạy điện)" data-operator="OR">
-                                 <i class="fa"></i>
-                                 Chạy điện
-                                 </label>
-                              </li>
-                           </ul>
-                        </aside>
                      </div>
                   </div>
                </div>
-               <aside class="aside-item collection-category">
+               {{-- <aside class="aside-item collection-category">
                   <div class="aside-title">Máy cầm tay điện</div>
                   <div class="aside-content clearfix">
                      <ul class="navbar-pills nav-category">
@@ -266,11 +213,11 @@ Danh sách {{$title}}
                         </li>
                      </ul>
                   </div>
-               </aside>
+               </aside> --}}
             </div>
          </div>
       </div>
-      <div class="row bottom-cate-banner">
+      {{-- <div class="row bottom-cate-banner">
          <div class="col-lg-6 col-md-6">
             <div class="evo-col-banner lazy" data-src="//bizweb.dktcdn.net/100/418/839/themes/808559/assets/bottom_cate_slider_1.jpg?1663922909046">
                <div class="content-left-banner">
@@ -310,17 +257,9 @@ Danh sách {{$title}}
                </div>
             </div>
          </div>
-      </div>
+      </div> --}}
    </div>
 </div>
 <div class="product_recent product-page-viewed">
-   <div class="container">
-      <div class="home-title">Sản phẩm bạn vừa xem</div>
-      <div class="product-page-viewed-wrap evo-slick-product swiper-container">
-         <div class="swiper-wrapper"></div>
-         <div class="swiper-button-next"></div>
-         <div class="swiper-button-prev"></div>
-      </div>
-   </div>
 </div>
 @endsection

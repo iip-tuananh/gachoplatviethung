@@ -107,9 +107,10 @@
             </div>
             </div>
             <div class="evo-search">
-            <form action="/search" method="get" class="evo-search-form" role="search">
+            <form action="{{route('search_result')}}" method="post" class="evo-search-form" role="search">
+               @csrf
                <div class="input-group">
-                  <input type="text" aria-label="Tìm sản phẩm" name="query" class="search-auto form-control" placeholder="Tìm sản phẩm..." autocomplete="off" />
+                  <input type="text" aria-label="Tìm sản phẩm" name="keyword" class="search-auto form-control" placeholder="Tìm sản phẩm..." autocomplete="off" />
                   <span class="input-group-append">
                         <button class="btn btn-default" type="submit" aria-label="Tìm kiếm">
                         <svg class="Icon Icon--search-desktop" viewBox="0 0 21 21">
