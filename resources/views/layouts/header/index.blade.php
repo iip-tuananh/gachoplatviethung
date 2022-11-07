@@ -131,12 +131,12 @@
             </div>
             <div class="col-md-9 no-padding">
                <ul id="nav" class="nav">
-                     <li class="nav-item {{ Route::currentRouteName()== 'home' ? 'active' : '' }}"><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
-                     <li class="nav-item {{ Route::currentRouteName()== 'aboutUs' ? 'active' : '' }}"><a class="nav-link" href="{{route('aboutUs')}}">Giới thiệu</a></li>
+                     <li class="nav-item "><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
+                     <li class="nav-item "><a class="nav-link" href="{{route('aboutUs')}}">Giới thiệu</a></li>
                      @foreach ($blogCate as $cate)
-                     <li class="nav-item {{url()->current() == route('listCateBlog', ['slug'=>$cate->slug]) ? 'active' : ''}}"><a class="nav-link" href="{{route('listCateBlog', ['slug'=>$cate->slug])}}">{{languageName($cate->name)}}</a></li>
+                     <li class="nav-item "><a class="nav-link" href="{{route('listCateBlog', ['slug'=>$cate->slug])}}">{{languageName($cate->name)}}</a></li>
                      @endforeach
-                     <li class="nav-item {{ Route::currentRouteName()== 'lienHe' ? 'active' : '' }}"><a class="nav-link" href="{{route('lienHe')}}">Liên hệ</a></li>
+                     <li class="nav-item "><a class="nav-link" href="{{route('lienHe')}}">Liên hệ</a></li>
                </ul>
             </div>
          </div>
