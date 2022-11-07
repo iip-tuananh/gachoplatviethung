@@ -1,4 +1,4 @@
-<footer class="footer">
+{{-- <footer class="footer">
    <div class="container">
          <div class="row">
          <div class="col-lg-7 col-md-12 col-12">
@@ -91,4 +91,100 @@
          </svg>
          </div>
    </div>
+</footer> --}}
+<footer id="footer" class="site-footer" itemscope="" itemtype="https://schema.org/WPFooter">
+   <div class="footer-widgets">
+      <div class="container">
+         <div class="wrap">
+            <div class="row">
+               <div class="footer-widgets-area col-md-4">
+                  <section id="media_image-2" class="widget widget_media_image"><img width="879" height="198" src="{{$setting->logo}}" class="image wp-image-126  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="{{$setting->logo}} 879w, {{$setting->logo}} 540w, {{$setting->logo}} 64w, {{$setting->logo}} 300w, {{$setting->logo}} 768w" sizes="(max-width: 879px) 100vw, 879px"></section>
+                  <section id="custom_html-2" class="widget_text widget widget_custom_html">
+                     <div class="textwidget custom-html-widget">
+                        {{$setting->webname}}
+                        <ul class="info_store">
+                           <li class="tel_phone"><a href="tel:{{$setting->phone1}}"> <i class="fas fa-phone-alt"></i> {{$setting->phone1}} </a></li>
+                        </ul>
+                     </div>
+                  </section>
+                  <section id="media_image-3" class="widget widget_media_image">
+                     <h4 class="widget-title">Hình thức thanh toán</h4>
+                     <img width="252" height="25" src="{{url('frontend/images/payment_1.png')}}" class="image wp-image-62  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" title="Hình thức thanh toán" srcset="{{url('frontend/images/payment_1.png')}} 252w, {{url('frontend/images/payment_1.png')}} 64w" sizes="(max-width: 252px) 100vw, 252px">
+                  </section>
+               </div>
+               <div class="footer-widgets-area col-md-4">
+                  <section id="information-2" class="widget widget_information">
+                     <h4 class="widget-title">thông tin liên hệ</h4>
+                     <ul>
+                        <li>
+                           <i class=" fas fa-map-marker-alt"></i><span class="">Địa chỉ:</span> 
+                           <p>{{$setting->address1}}</p>
+                        </li>
+                        <li>
+                           <i class=" fas fa-phone-alt"></i><span class="">Số điện thoại:</span> 
+                           <p>{{$setting->phone2}}</p>
+                        </li>
+                        <li>
+                           <i class=" fas fa-mobile-alt"></i><span class="">Hotline:</span> 
+                           <p>{{$setting->phone1}}</p>
+                        </li>
+                        <li>
+                           <i class=" far fa-envelope"></i><span class="">Email:</span> 
+                           <p>{{$setting->email}}</p>
+                        </li>
+                        <li>
+                           <i class=" far fa-clock"></i><span class="">Giờ mở cửa:</span> 
+                           <p>  08h00 - 18h00  / Thứ 2 - Thứ 7  </p>
+                        </li>
+                     </ul>
+                  </section>
+                  <section id="social-2" class="widget widget_social">
+                     <h4 class="widget-title">Theo dõi mạng xã hội</h4>
+                     <ul>
+                        <li class="icon_social icon_facebook"><a title="Facebook" href="{{$setting->facebook}}" rel="nofollow" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="icon_social icon_twitter"><a title="Twitter" href="{{$setting->google}}" rel="nofollow" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li class="icon_social icon_google"><a title="Google Plus" href="{{route('home')}}" rel="nofollow" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li class="icon_social icon_youtube"><a title="Youtube" href="{{$setting->fbPixel}}" rel="nofollow" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                     </ul>
+                  </section>
+               </div>
+               <div class="footer-widgets-area col-md-4">
+                  <section id="nav_menu-4" class="widget widget_nav_menu">
+                     <h4 class="widget-title">Về chúng tôi</h4>
+                     <div class="menu-danh-cho-khach-hang-container">
+                        <ul id="menu-danh-cho-khach-hang" class="menu">
+                           <li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a href="{{route('home')}}">Trang chủ</a></li>
+                           <li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a href="{{route('aboutUs')}}">Giới thiệu</a></li>
+                           @foreach ($blogCate as $cate)
+                           <li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a href="{{route('listCateBlog', ['slug'=>$cate->slug])}}">{{languageName($cate->name)}}</a></li>
+                           @endforeach
+                           <li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a href="{{route('lienHe')}}">Liên hệ</a></li>
+                        </ul>
+                     </div>
+                  </section>
+                  <section id="nav_menu-5" class="widget widget_nav_menu">
+                     <h4 class="widget-title">Hỗ trợ khách hàng</h4>
+                     <div class="menu-c-sach-va-d-khoan-container">
+                        <ul id="menu-c-sach-va-d-khoan" class="menu">
+                        @foreach ($helpCustomer as $item)
+                           <li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="{{route('helpCus', ['slug'=>$item->slug])}}">{{$item->title}}</a></li>
+                        @endforeach
+                        </ul>
+                     </div>
+                  </section>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright text-center">
+         © Bản quyền thuộc về Việt Hùng <span class="s480-f">|</span> Cung cấp bởi <a href="https://sbtsoftware.vn/" title="SBT" target="_blank" rel="nofollow">SBT</a>
+         <div class="back-to-top text-center" title="Lên đầu trang">
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 284.929 284.929" style="enable-background:new 0 0 284.929 284.929;" xml:space="preserve">
+            <path d="M282.082,195.285L149.028,62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665,0.953-6.567,2.856L2.856,195.285   C0.95,197.191,0,199.378,0,201.853c0,2.474,0.953,4.664,2.856,6.566l14.272,14.271c1.903,1.903,4.093,2.854,6.567,2.854   c2.474,0,4.664-0.951,6.567-2.854l112.204-112.202l112.208,112.209c1.902,1.903,4.093,2.848,6.563,2.848   c2.478,0,4.668-0.951,6.57-2.848l14.274-14.277c1.902-1.902,2.847-4.093,2.847-6.566   C284.929,199.378,283.984,197.188,282.082,195.285z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
+         </svg>
+         </div>
+      </div>
+   </div>
+   
+   <!-- .footer-widgets -->
 </footer>
