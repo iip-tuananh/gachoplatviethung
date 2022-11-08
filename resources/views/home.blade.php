@@ -80,7 +80,7 @@
                nextEl: '.evo-sale-controller .swiper-button-next',
                prevEl: '.evo-sale-controller .swiper-button-prev',
             },
-            // autoplay: true,
+            autoplay: true,
             autoHeight: true,
             breakpoints: {
                300: {
