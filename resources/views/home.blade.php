@@ -75,12 +75,12 @@
          var swiper = new Swiper('.brand-logo', {
             slidesPerView: 4,
             spaceBetween: 15,
-            slidesPerGroup: 2,
+            slidesPerGroup: 1,
             navigation: {
                nextEl: '.evo-sale-controller .swiper-button-next',
                prevEl: '.evo-sale-controller .swiper-button-prev',
             },
-            autoplay: true,
+            // autoplay: true,
             autoHeight: true,
             breakpoints: {
                300: {
